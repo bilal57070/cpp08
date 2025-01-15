@@ -17,6 +17,7 @@ class Span{
         void addNumber(int n);
         int shortestSpan();
         int longestSpan();
+        void addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end);
     
     private:
         unsigned int N;
@@ -25,16 +26,12 @@ class Span{
 
 class FilledContainerException : public std::exception{
     public:
-        const char* what() const throw(){
-            return ("containeur already filled");
-        }
+        const char* what() const throw();
 };
 
 class NotEnoughNumberException : public std::exception{
     public:
-        const char* what() const throw(){
-            return ("not enough number in the containeur");
-        }
+        const char* what() const throw();
 };
 
 

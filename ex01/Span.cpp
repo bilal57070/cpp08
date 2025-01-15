@@ -31,8 +31,33 @@ int     Span::shortestSpan(){
         throw NotEnoughNumberException();
     std::vector<int> cp = t;
     std::sort(cp.begin(), cp.end());
-    int res = *(cp.end()) - *(std::prev(cp.begin()));
+    int res = *(cp.end() - 1) - *(cp.begin());
     for (std::vector<int>::iterator it = cp.begin(); it != cp.end(); ++it){
-        if (res < )
+        if (res > (*it - *(it - 1)))
+            res = (*it - *(it - 1));
     }
+    return res;
+}
+
+int     Span::longestSpan(){
+    if (t.empty() || t.size() == 1)
+        throw NotEnoughNumberException();
+    std::vector<int> cp = t;
+    std::sort(cp.begin(), cp.end());
+    int res = *(cp.end() - 1) - *(cp.begin());
+    return res;
+}
+
+void    Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end){
+    while (start++ < end && start != t.end()){
+        t.push_back(*start);
+    }
+}
+
+const char *NotEnoughNumberException::what() const throw(){
+    return ("not enough number in the containeur");
+}
+
+const char *FilledContainerException::what() const throw(){
+    return ("containeur already filled");
 }
