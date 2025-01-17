@@ -4,7 +4,7 @@
 # include <iostream>
 # include <algorithm>
 
-template<typename T> class MutantStack{
+template<typename T> class MutantStack : public std::stack{
     public:
         MutantStack();
         ~MutantStack();
@@ -16,6 +16,10 @@ template<typename T> class MutantStack{
         size_t size() const;
         void push(const T& value);
         void pop();
+        T::iterator begin();
+        //void print();
+
+
 
     private:
         T *tab;

@@ -43,12 +43,28 @@ bool    MutantStack<T>::empty() const{
 
 template<typename T>
 void    MutantStack<T>::pop(){
-    delete tab[_size];
+    delete tab;
+    tab = new T[0];
+    _size = 0;
 }
 
 template<typename T>
 void    MutantStack<T>::push(const T& v){
-    tab[_size] = new T[];
-    tab[_size] = v;
+    T *newtab = new T[_size + 1];
+
+    for (size_t i = 0; i < _size; i++){
+        newtab[i] = tab[i];
+    }
+    //std::cout << _size << " la taille en gros" << std::endl;
+    newtab[_size] = v;
     _size++;
+    delete tab;
+    tab = newtab; 
 }
+
+/*template<typename T>
+void    MutantStack<T>::print(){
+    for (size_t i = 0; i < _size; i++){
+        std::cout << tab[i] << std::endl;
+    }
+}*/
